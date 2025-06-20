@@ -3,6 +3,9 @@ COM-PORT reader cho cân điện tử UPA-Q trên window
 - dùng python
 * cách cài đặt:
 - pip install -r requirements.txt
+- build ra .exe:
+  pyinstaller --onefile --windowed upa_q_v2.py (trong đó upa_q_v2.py là tên file của bạn)
+  sau khi build file sẽ nằm trong thư mục dist/
 
 hướng dẫn sử dung:
 + chọn cổng COM, nếu không có thử bấm nút refresh cổng COM để xem có không
