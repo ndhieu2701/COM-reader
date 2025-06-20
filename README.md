@@ -12,4 +12,7 @@ hướng dẫn sử dung:
 + timeout để check xem trong khoảng thời gian đó nếu không nhận được dữ liệu sẽ tự động giải phóng cổng COM và reconnect lại sau 5s :v
 + ghi log và clear log
 
+có 2 version
+- v2 là giao diện đẹp hơn
+
 custom từ repo: https://github.com/Smartlux/py232key
