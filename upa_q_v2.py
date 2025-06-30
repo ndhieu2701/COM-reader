@@ -64,7 +64,7 @@ encoding_entry.grid(row=row, column=1, sticky='ew', pady=4)
 row += 1
 ttk.Label(main_frame, text="Regex (optional):").grid(row=row, column=0, sticky='e', pady=4)
 regex_entry = ttk.Entry(main_frame, width=40)
-regex_entry.insert(0, r'^WT\.\s+([0-9]+\.[0-9]+)')
+regex_entry.insert(0, r'^WT\.:\s+([0-9]+\.[0-9]+)')
 regex_entry.grid(row=row, column=1, columnspan=2, sticky='ew', pady=4)
 
 row += 1
@@ -168,13 +168,14 @@ def read_loop():
 
         try:
             line = ser.readline().decode(encoding, errors='strict').strip()
+            cleaned_line = re.sub(r'\s+', ' ', line).strip()  # Chuẩn hóa khoảng trắng
             now = time.time()
             if line:
                 last_data_time = now
                 disconnected_logged = False
-                log(f"📥 Received: {repr(line)}")
+                log(f"📥 Received: {repr(cleaned_line)}")
                 if regex.strip():
-                    match = re.search(regex, line)
+                    match = re.search(regex, cleaned_line)
                     if match:
                         try:
                             extracted = match.group(1)
@@ -185,7 +186,7 @@ def read_loop():
                         log("⚠️ No match found.")
                         continue
                 else:
-                    extracted = line
+                    extracted = cleaned_line
                     log(f"🎯 Full line used: {repr(extracted)}")
                 keyboard.type(extracted)
                 if send_enter.get():
