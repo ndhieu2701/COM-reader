@@ -64,11 +64,11 @@ encoding_entry.grid(row=row, column=1, sticky='ew', pady=4)
 row += 1
 ttk.Label(main_frame, text="Regex (optional):").grid(row=row, column=0, sticky='e', pady=4)
 regex_entry = ttk.Entry(main_frame, width=40)
-regex_entry.insert(0, r'^WT\.:\s+([0-9]+\.[0-9]+)')
+regex_entry.insert(0, r'^(?:WT\.|T\.)\:\s*([0-9]+(?:\.[0-9]+)?)')
 regex_entry.grid(row=row, column=1, columnspan=2, sticky='ew', pady=4)
 
 row += 1
-send_enter = tk.BooleanVar(value=True)
+send_enter = tk.BooleanVar(value=False)
 ttk.Checkbutton(main_frame, text="Gửi Enter sau khi nhập", variable=send_enter, bootstyle="success-round-toggle").grid(row=row, column=0, columnspan=3, sticky='w', pady=4)
 
 row += 1
